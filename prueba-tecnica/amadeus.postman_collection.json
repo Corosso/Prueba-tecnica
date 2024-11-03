@@ -1,0 +1,43 @@
+{
+	"info": {
+		"_postman_id": "54a0e504-94ed-4164-a7b0-0a897e1ec867",
+		"name": "amadeus",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6802192"
+	},
+	"item": [
+		{
+			"name": "https://staging.travelflight.aiop.com.co/api/flights/v2 Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"direct\": false,\n    \"currency\": \"COP\",\n    \"searchs\": 50,\n    \"class\": false,\n    \"qtyPassengers\": 1,\n    \"adult\": 1,\n    \"child\": 0,\n    \"baby\": 0,\n    \"seat\": 0,\n    \"itinerary\": [\n        {\n            \"departureCity\": \"MDE\",\n            \"arrivalCity\": \"YYZ\",\n            \"hour\": \"2024-10-31T05:00:00.000Z\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://staging.travelflight.aiop.com.co/api/flights/v2",
+					"protocol": "https",
+					"host": [
+						"staging",
+						"travelflight",
+						"aiop",
+						"com",
+						"co"
+					],
+					"path": [
+						"api",
+						"flights",
+						"v2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
