@@ -1,4 +1,4 @@
-# Proyecto de Reservas de Vuelos - Frontend
+# Prueba tecnica de Reservas de Vuelos - Frontend
 
 ## Requisitos Previos
 Para configurar y ejecutar el frontend del proyecto de reservas de vuelos, necesitarás tener las siguientes herramientas instaladas en tu máquina:
@@ -58,5 +58,5 @@ Esto abrirá la aplicación en el navegador por defecto en `http://localhost:300
 ## Estructura del Proyecto
 - **src/components**: Contiene los componentes individuales como `Buscar`, `Resultados`, `Reserva`.
 - **public**: Archivos públicos, como `index.html`.
-- **src**: Código fuente de la aplicación, incluyendo el punto de entrada `index.js` y los componentes de la interfaz de usuario.
+- **src**: Código fuente de la aplicación, incluyendo el punto de entrada `App.js` y los componentes de la interfaz de usuario.
 
