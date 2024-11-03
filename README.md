@@ -125,7 +125,7 @@ El backend del proyecto está desarrollado en Laravel. Sigue estos pasos para co
 Para ejecutar todo el proyecto:
 1. Asegúrate de tener ambos servidores en ejecución:
    - **Frontend**: Ejecuta `npm start` o `yarn start` en el directorio `Prueba tecnica/prueba-tecnica`.
-   - **Backend**: Ejecuta `php artisan serve` en el directorio `Prueba tecnica/vuelos-reserva`.
+   - **Backend**: Ejecuta `php artisan serve` en el directorio `Prueba tecnica/prueba-tecnica/vuelos-reserva`.
 2. Accede a `http://localhost:3000/` para ver la interfaz del proyecto y realizar las reservas.
 
 
