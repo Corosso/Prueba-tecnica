@@ -20,3 +20,8 @@ Route::get('/', function () {
 use App\Http\Controllers\ReservaController;
 
 Route::post('/reservas', [ReservaController::class, 'store']);
+
+
+Route::middleware(['custom-cors'])->group(function () {
+    Route::post('/reservas', [ReservaController::class, 'store']);
+});

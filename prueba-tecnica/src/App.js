@@ -4,9 +4,6 @@ import Resultados from './components/Resultados';
 import Reserva from './components/Reserva';
 import axios from 'axios';
 
-axios.defaults.withCredentials = true;  // Esto permite enviar cookies con cada solicitud
-
-
 const App = () => {
     const [searchParams, setSearchParams] = useState(null);
     const [selectedFlight, setSelectedFlight] = useState(null);
@@ -54,14 +51,11 @@ const App = () => {
         setSelectedFlight(flight);
     };
 
-
     
     const handleSave = async (reservation) => {
         try {
-            // Obtener el token CSRF (opcional si usas Sanctum para autenticar la SPA)
-            await axios.get('http://localhost:8000/sanctum/csrf-cookie');
-    
-            // Definir la reserva formateada
+            
+            
             const formattedReservation = {
                 nombre_cliente: reservation.passengerName,
                 email: reservation.email,
@@ -70,21 +64,27 @@ const App = () => {
                 infantes: 0,
                 ciudad_salida: reservation.flightDetails.departureCity,
                 ciudad_destino: reservation.flightDetails.arrivalCity,
-                fecha_hora_vuelo: reservation.flightDetails.date + reservation.flightDetails.time,
+                fecha_hora_vuelo: reservation.flightDetails.fechaHoraVuelo, // Utilizar directamente el valor ya concatenado
                 detalles_vuelo: JSON.stringify(reservation.flightDetails)
             };
     
-            // Realizar la solicitud POST para guardar la reserva
-            const response = await axios.post('http://localhost:8000/api/reservas', formattedReservation, {
+            
+            
+            const response = await axios.post('http://localhost:8000/reservas', formattedReservation, {
+                
                 headers: {
                     'Content-Type': 'application/json',
                 },
+                
             });
     
             console.log('Reserva guardada en el servidor:', response.data);
+            setReservationData(reservation);
         } catch (error) {
             if (error.response) {
                 console.error('Respuesta del servidor:', error.response.data);
+                console.error('Estado del servidor:', error.response.status);
+                console.error('Encabezados del servidor:', error.response.headers);
             } else if (error.request) {
                 console.error('Solicitud realizada, sin respuesta:', error.request);
             } else {
