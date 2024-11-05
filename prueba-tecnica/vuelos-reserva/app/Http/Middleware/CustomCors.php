@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
+//se crea el CORS para permitir el intercamio de datos entre HOSTS diferentes
 class CustomCors
 {
     public function handle($request, Closure $next)

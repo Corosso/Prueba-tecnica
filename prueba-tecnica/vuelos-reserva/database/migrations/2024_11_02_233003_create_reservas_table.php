@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        //se crea la tabla para guardar las reservas
         Schema::create('reservas', function (Blueprint $table) {
             $table->id();
             $table->string('nombre_cliente');

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+//declaracion de variables 
 const Reserva = ({ onSave, flightDetails }) => {
     const [passengerName, setPassengerName] = useState('');
     const [passportNumber, setPassportNumber] = useState('');
@@ -13,6 +14,7 @@ const Reserva = ({ onSave, flightDetails }) => {
         time: ''
     });
 
+    //actualiza el estado de los datos del vuelo
     useEffect(() => {
         if (flightDetails) {
             setFilledFlightDetails({
@@ -23,7 +25,7 @@ const Reserva = ({ onSave, flightDetails }) => {
         }
     }, [flightDetails]);
     
-
+    //manejo de los inputs
     const handleSubmit = (e) => {
         e.preventDefault();
         const currentErrors = {};
@@ -46,7 +48,7 @@ const Reserva = ({ onSave, flightDetails }) => {
             return;
         }
     
-        // Aquí creamos el objeto con los datos que queremos enviar
+        // se crea el objeto con los datos que se van a enviar
         const reservationData = {
             passengerName,
             passportNumber,
@@ -55,11 +57,11 @@ const Reserva = ({ onSave, flightDetails }) => {
             flightDetails: filledFlightDetails
         };
     
-        // Llamamos a la función `onSave` que viene desde `App.js` para guardar la reserva
+        // se llama la función `onSave` de `App.js` para guardar la reserva
         onSave(reservationData);
         console.log('Reserva guardada:', reservationData);
     
-        // Limpiar el formulario
+        // limpiar el formulario
         setPassengerName('');
         setPassportNumber('');
         setEmail('');

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class ReservaController extends Controller
 {
+    //controlador para las reservas
     public function store(Request $request)
     {
         // Validar los datos

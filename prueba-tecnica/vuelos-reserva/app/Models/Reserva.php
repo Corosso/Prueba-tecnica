@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reserva extends Model
 {
+    //modelo para los datos de la tabla
     protected $fillable = [
         'nombre_cliente',
         'email',

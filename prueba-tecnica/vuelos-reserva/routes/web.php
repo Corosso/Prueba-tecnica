@@ -19,8 +19,10 @@ Route::get('/', function () {
 
 use App\Http\Controllers\ReservaController;
 
+//ruta para el post para ingresar la reserva a la base de datos
 Route::post('/reservas', [ReservaController::class, 'store']);
 
+//ruta para autorizar el CORS
 
 Route::middleware(['custom-cors'])->group(function () {
     Route::post('/reservas', [ReservaController::class, 'store']);

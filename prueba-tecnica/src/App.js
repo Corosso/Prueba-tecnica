@@ -20,7 +20,7 @@ const App = () => {
             // Calcula el total de pasajeros
             const totalPassengers = (params.adults || 1) + (params.children || 0) + (params.infants || 0);
 
-            // Ajusta el payload incluyendo qtyPassengers
+            // Ajusta el payload 
             const formattedParams = {
                 direct: false,
                 currency: "COP",
@@ -64,12 +64,12 @@ const App = () => {
                 infantes: 0,
                 ciudad_salida: reservation.flightDetails.departureCity,
                 ciudad_destino: reservation.flightDetails.arrivalCity,
-                fecha_hora_vuelo: reservation.flightDetails.fechaHoraVuelo, // Utilizar directamente el valor ya concatenado
+                fecha_hora_vuelo: reservation.flightDetails.fechaHoraVuelo, // se concatena la fecha y la hora
                 detalles_vuelo: JSON.stringify(reservation.flightDetails)
             };
     
             
-            
+            //solicitud
             const response = await axios.post('http://localhost:8000/reservas', formattedReservation, {
                 
                 headers: {

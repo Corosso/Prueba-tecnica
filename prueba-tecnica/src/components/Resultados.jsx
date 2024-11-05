@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+//declaracion de variables 
 const Resultados = ({ searchParams, onSelectFlight }) => {
     const [flights, setFlights] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -10,6 +11,7 @@ const Resultados = ({ searchParams, onSelectFlight }) => {
     const [selectedFlight, setSelectedFlight] = useState(null);
 
     useEffect(() => {
+        //funcion para la solicitud post a la API para buscar los vuelos
         const fetchFlights = async (retries = 3) => {
             try {
                 setLoading(true);
@@ -21,6 +23,7 @@ const Resultados = ({ searchParams, onSelectFlight }) => {
                     body: JSON.stringify(searchParams),
                 });
         
+                //manejo por si la API no responde en el primer intento
                 if (response.status === 204 && retries > 0) {
                     console.warn('No se encontraron vuelos, reintentando...');
                     setTimeout(() => fetchFlights(retries - 1), 1000);
@@ -44,16 +47,18 @@ const Resultados = ({ searchParams, onSelectFlight }) => {
         fetchFlights();
     }, [searchParams]);
 
+    //seleccionar vuelo
     const handleFlightSelect = (flight) => {
         setSelectedFlight(flight);
     };
-
+    //reservar vuelo
     const handleReserveClick = () => {
         if (selectedFlight) {
             onSelectFlight(selectedFlight);
         }
     };
 
+    //filtrar por aerolinea
     const filteredFlights = flights.filter(segment => {
         const airlineMatch = filters.airline ? segment.segments.some(flight => flight.companyId.marketingCarrier === filters.airline) : true;
         const dateMatch = filters.date ? segment.segments.some(flight => flight.productDateTime.dateOfDeparture.includes(filters.date)) : true;

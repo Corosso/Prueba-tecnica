@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
 
+//declaracion de variables 
 const Buscar = ({ onSearch }) => {
     const [departure, setDeparture] = useState('');
     const [arrival, setArrival] = useState('');
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
-    const [adults, setAdults] = useState(1); // Número de adultos
-    const [children, setChildren] = useState(0); // Número de niños
-    const [infants, setInfants] = useState(0); // Número de bebés
+    const [adults, setAdults] = useState(1); 
+    const [children, setChildren] = useState(0); 
+    const [infants, setInfants] = useState(0); 
     const [errors, setErrors] = useState({});
     const [departureSuggestions, setDepartureSuggestions] = useState([]);
     const [arrivalSuggestions, setArrivalSuggestions] = useState([]);
 
+    //funcion para la solicitud post a la API para buscar los aeropuertos
     const fetchAirports = async (query, setSuggestions) => {
         if (!query) {
             setSuggestions([]);
@@ -47,18 +49,20 @@ const Buscar = ({ onSearch }) => {
         }
     };
 
+    //funcion para manejar el cambio del input para buscar el aeropuerto (aeropuerto de salida)
     const handleDepartureChange = (e) => {
         const value = e.target.value;
         setDeparture(value);
         fetchAirports(value, setDepartureSuggestions);
     };
-
+    //funcion para manejar el cambio del input para buscar el aeropuerto (aeropuerto de llegada)
     const handleArrivalChange = (e) => {
         const value = e.target.value;
         setArrival(value);
         fetchAirports(value, setArrivalSuggestions);
     };
 
+    //manejo de campos vacios
     const handleSubmit = (e) => {
         e.preventDefault();
         const currentErrors = {};
